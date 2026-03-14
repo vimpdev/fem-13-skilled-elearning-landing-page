@@ -1,0 +1,28 @@
+# Avoid accidental upload of the Sketch and Figma design files
+#####################################################
+## Please do not remove lines 5 and 6 - thanks! 🙂 ##
+#####################################################
+*.sketch
+*.fig
+
+# Avoid accidental XD upload if you convert the design file
+###############################################
+## Please do not remove line 12 - thanks! 🙂 ##
+###############################################
+*.xd
+
+# Avoid your project being littered with annoying .DS_Store files!
+.DS_Store
+.prettierignore
+.vscode
+
+# Design references
+design
+
+# PNG versions (using WebP instead)
+assets/images/image-hero-desktop.png
+assets/images/image-hero-desktop@2x.png
+assets/images/image-hero-mobile.png
+assets/images/image-hero-mobile@2x.png
+assets/images/image-hero-tablet.png
+assets/images/image-hero-tablet@2x.png
