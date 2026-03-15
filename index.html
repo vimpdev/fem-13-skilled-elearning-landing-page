@@ -1,52 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#13183F">
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Skilled e-learning landing page</title>
+  <title>Skilled e-learning landing page</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png">
+
+  <link rel="stylesheet" href="./styles/main.css">
 </head>
-<body>
 
-  Get Started
+<body class="site">
 
-  Maximize skill, minimize budget
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a href="./" class="brand brand-dark">
+        <img src="./assets/logos/logo-dark.svg" alt="Skilled">
+      </a>
 
-  Our modern courses across a range of in-demand skills will give you the 
-  knowledge you need to live the life you want.
+      <a href="#courses" class="cta cta-header">Get Started</a>
+    </div>
+  </header>
 
-  Get Started
+  <main class="site-content">
+    <div class="container">
+      <section class="hero">
+        <div class="hero-content">
+          <h1 class="hero-title">Maximize skill, minimize budget</h1>
+          <p class="hero-description">
+            Our modern courses across a range of in-demand skills will give you the knowledge you need to live the life
+            you want.
+          </p>
+          <a href="#" class="cta cta-hero">Get Started</a>
+        </div>
+        <picture class="hero-media">
+          <source media="(min-width: 75rem)"
+            srcset="./assets/images/image-hero-desktop.webp, ./assets/images/image-hero-desktop@2x.webp 2x">
+          <source media="(min-width: 48rem)"
+            srcset="./assets/images/image-hero-tablet.webp, ./assets/images/image-hero-tablet@2x.webp 2x">
+          <img src="./assets/images/image-hero-mobile.webp" srcset="./assets/images/image-hero-mobile@2x.webp 2x"
+            alt="Woman learning online on the Skilled e-learning platform" fetchpriority="high">
+        </picture>
+      </section>
 
-  Check out our most popular courses!
+      <section id="courses" class="features">
+        <h2 class="features-title">Check out our most popular courses!</h2>
 
-  Animation
-  Learn the latest animation techniques to create stunning motion 
-  design and captivate your audience.
-  Get Started
+        <article class="feature">
+          <img src="./assets/icons/icon-animation.svg" alt="" class="feature-icon">
+          <h3 class="feature-title">Animation</h3>
+          <p class="feature-description">
+            Learn the latest animation techniques to create stunning motion
+            design and captivate your audience.
+          </p>
+          <a href="#courses" class="cta cta-feature">Get Started</a>
+        </article>
 
-  Design
-  Create beautiful, usable interfaces to help shape the future of 
-  how the web looks.
-  Get Started
+        <article class="feature">
+          <img src="./assets/icons/icon-design.svg" alt="" class="feature-icon">
+          <h3 class="feature-title">Design</h3>
+          <p class="feature-description">
+            Create beautiful, usable interfaces to help shape the future of
+            how the web looks.
+          </p>
+          <a href="#courses" class="cta cta-feature">Get Started</a>
+        </article>
 
-  Photography
-  Explore critical fundamentals like lighting, composition, and focus 
-  to capture exceptional photos.
-  Get Started
+        <article class="feature">
+          <img src="./assets/icons/icon-photography.svg" alt="" class="feature-icon">
+          <h3 class="feature-title">Photography</h3>
+          <p class="feature-description">
+            Explore critical fundamentals like lighting, composition, and focus
+            to capture exceptional photos.
+          </p>
+          <a href="#courses" class="cta cta-feature">Get Started</a>
+        </article>
 
-  Crypto
-  All you need to know to get started investing in crypto. Go from beginner 
-  to advanced with this 54 hour course.
-  Get Started
+        <article class="feature">
+          <img src="./assets/icons/icon-crypto.svg" alt="" class="feature-icon">
+          <h3 class="feature-title">Crypto</h3>
+          <p class="feature-description">
+            All you need to know to get started investing in crypto. Go from beginner
+            to advanced with this 54 hour course.
+          </p>
+          <a href="#courses" class="cta cta-feature">Get Started</a>
+        </article>
 
-  Business
-  A step-by-step playbook to help you start, scale, and sustain your business 
-  without outside investment.
-  Get Started
+        <article class="feature">
+          <img src="./assets/icons/icon-business.svg" alt="" class="feature-icon">
+          <h3 class="feature-title">Business</h3>
+          <p class="feature-description">
+            A step-by-step playbook to help you start, scale, and sustain your business
+            without outside investment.
+          </p>
+          <a href="#courses" class="cta cta-feature">Get Started</a>
+        </article>
+      </section>
+    </div>
+  </main>
 
-  Get Started
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <a href="./" class="brand brand-light">
+        <img src="./assets/logos/logo-light.svg" alt="Skilled">
+      </a>
+
+      <a href="#courses" class="cta cta-footer">Get Started</a>
+
+      <small class="attribution">Challenge by <a href="https://www.frontendmentor.io/challenges" target="_blank"
+          rel="noopener noreferrer" class="attribution-link">Frontend Mentor</a> &ndash; Coded by <a
+          href="https://www.frontendmentor.io/profile/vimpdev" target="_blank" rel="noopener noreferrer"
+          class="attribution-link">VIMP</a></small>
+    </div>
+  </footer>
+
 
 </body>
+
 </html>
