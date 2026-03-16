@@ -30,7 +30,7 @@ Users should be able to:
 ## 🔗 Links
 
 - 🌎 [Live site](https://vimpdev.github.io/fem-13-skilled-elearning-landing-page/)
-<!-- - 🧑‍💻 [View solution on Frontend Mentor](https://your-solution-url.com) -->
+- 🧑‍💻 [View solution on Frontend Mentor](https://www.frontendmentor.io/solutions/skilled-landing-page-mobile-first-layer-responsive-images-1ER6v43kaI)
 
 ---
 
