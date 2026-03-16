@@ -1,122 +1,158 @@
-# Frontend Mentor - Skilled e-learning landing page solution
+# 🚀 Frontend Mentor - Skilled e-learning landing page solution
 
 This is a solution to the [Skilled e-learning landing page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/skilled-elearning-landing-page-S1ObDrZ8q). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Table of contents
+---
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-  - [AI Collaboration](#ai-collaboration)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
+## 🎬 Demo
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+![](./docs/demo.gif)
 
-## Overview
+---
 
-### The challenge
+## 🎯 The challenge
 
 Users should be able to:
 
 - View the optimal layout depending on their device's screen size
 - See hover states for interactive elements
 
-### Screenshot
+---
 
-![](./screenshot.jpg)
+## 📸 Screenshots
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+| Mobile | Tablet | Desktop |
+| --- | --- | --- |
+| ![](./docs/mobile.avif) | ![](./docs/tablet.avif) | ![](./docs/desktop.avif) |
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
+---
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+## 🔗 Links
 
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+- 🌎 [Live site](https://vimpdev.github.io/fem-13-skilled-elearning-landing-page/)
+<!-- - 🧑‍💻 [View solution on Frontend Mentor](https://your-solution-url.com) -->
 
-### Links
+---
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+## 🛠️ Built with
 
-## My process
-
-### Built with
-
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
+- Semantic HTML5
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- CSS custom properties
+- CSS Grid
+- Flexbox
+- CSS `@layer` architecture
+- Responsive images using `picture` + `srcset`
+- **1x** / **2x** image strategy
+- Accessible focus states
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+---
 
-### What I learned
+## 🧠 What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+This project allowed me to practice several modern CSS techniques and performance optimizations.
 
-To see how you can add code snippets, see below:
+### 📌 Responsive images with `picture` and `srcset`
+
+The hero image uses a responsive image strategy with different assets for mobile, tablet, and desktop.
+
+It also includes **1x and 2x versions** for high-density displays.
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
+<picture class="hero-media">
+  <source media="(min-width: 1200px)"
+  srcset="./assets/images/image-hero-desktop.webp,
+          ./assets/images/image-hero-desktop@2x.webp 2x">
+
+  <source media="(min-width: 768px)"
+  srcset="./assets/images/image-hero-tablet.webp,
+          ./assets/images/image-hero-tablet@2x.webp 2x">
+
+  <img
+    src="./assets/images/image-hero-mobile.webp"
+    srcset="./assets/images/image-hero-mobile.webp,
+            ./assets/images/image-hero-mobile@2x.webp 2x"
+    alt="Woman learning online on the Skilled e-learning platform"
+    fetchpriority="high">
+</picture>
 ```
+The `fetchpriority="high"` attribute ensures the hero image is prioritized by the browser during page load.
+
+### 📌 CSS architecture using @layer
+
+The styles are organized using CSS cascade layers, which improves maintainability and avoids specificity issues.
 ```css
-.proud-of-this-css {
-  color: papayawhip;
+@layer reset, fonts, tokens, base, layout, components, responsive, states;
+```
+Each layer has a clear responsibility:
+- reset → minimal CSS reset
+- tokens → design variables
+- base → base styles
+- layout → layout utilities
+- components → UI components
+- responsive → breakpoints
+- states → hover/focus states
+
+### 📌 Preventing horizontal scroll
+
+The hero image intentionally overflows its container to match the design.  
+To prevent this from creating horizontal scroll on the page, the following property is used:
+```css
+.site-content {
+  overflow-x: clip;
 }
 ```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+This safely clips overflowing content without creating scrollbars.
+
+### 📌 Hover effect using layered backgrounds
+
+The hover effect for the CTA buttons (hero and footer) is created using two background layers.  
+A semi-transparent white layer fades in above the gradient background.
+```css
+.cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(#ffffff80, #ffffff80);
+  opacity: 0;
+  transition: opacity .25s ease-in-out;
 }
 ```
+On hover or focus:
+```css
+.cta:is(:hover, :focus-visible)::before {
+  opacity: 1;
+}
+```
+This approach avoids altering the original gradient while creating the "lightened" hover state.
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+### 📌 Using `:is()` for cleaner state selectors
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+The `:is()` pseudo-class was used to simplify selectors and avoid repetition.
+```css
+.cta:is(:hover, :focus-visible)::before {
+  opacity: 1;
+}
+```
+This improves readability and keeps state management consistent across components.
 
-### Continued development
+---
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+## 🤖 AI Collaboration
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+AI tools were used during this project to:
 
-### Useful resources
+- review CSS architecture decisions
+- debug layout issues
+- explore alternative implementations
+- refine accessibility and performance improvements
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+The AI acted as a technical assistant, helping validate solutions and explore best practices while the final implementation decisions remained manual.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+---
 
-### AI Collaboration
+## 👩‍💻 Author
 
-Describe how you used AI tools (if any) during this project. This helps demonstrate your ability to work effectively with AI assistants.
+- Frontend Mentor &ndash; [@vimpdev](https://www.frontendmentor.io/profile/vimpdev)
 
-- What tools did you use (e.g., ChatGPT, Claude, GitHub Copilot)?
-- How did you use them (e.g., debugging, generating boilerplate, brainstorming solutions)?
-- What worked well? What didn't?
-
-**Note: Delete this note and the content above if you didn't use AI, or replace with your own experience.**
-
-## Author
-
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+---
